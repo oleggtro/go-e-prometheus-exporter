@@ -106,11 +106,7 @@ fn main() {
 
     // Start exporter and update metrics every five seconds.
     let exporter = prometheus_exporter::start(addr).expect("can not start exporter");
-    let duration = std::time::Duration::from_secs(5);
-
-    // Create metric
-    let random = register_gauge!("run_and_repeat_random", "will set a random value")
-        .expect("can not create gauge random_value_metric");
+    let fetch_interval = std::time::Duration::from_secs(30);
 
     let home_gauge = register_gauge!("home_power_usage", "shows the whole home power usage")
         .expect("couldn't create home gauge");
@@ -127,7 +123,7 @@ fn main() {
     loop {
         {
             // Will block until duration is elapsed.
-            let _guard = exporter.wait_duration(duration);
+            let _guard = exporter.wait_duration(fetch_interval);
             let goe_query_response = do_go_e_query("192.168.178.81");
             debug!("parsed_response: {:?}", goe_query_response);
 
