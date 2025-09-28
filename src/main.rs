@@ -4,6 +4,11 @@ use prometheus_exporter::prometheus::register_gauge;
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, net::SocketAddr, panic};
 
+// Use Jemalloc only for musl-64 bits platforms
+#[cfg(all(target_env = "musl", target_pointer_width = "64"))]
+#[global_allocator]
+static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
+
 #[derive(Debug, Deserialize)]
 pub struct GoEControllerApiResponse {
     #[serde(rename = "ccn")]
