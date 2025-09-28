@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t ghcr.io/oleggtro/go-e-prometheus-exporter:latest .
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/oleggtro/go-e-prometheus-exporter:v0.1.0 --push .

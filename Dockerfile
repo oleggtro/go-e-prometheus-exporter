@@ -11,7 +11,7 @@ FROM scratch AS runner
 ARG BIN_NAME=go-e-prometheus-exporter
 
 # link image to repo
-LABEL org.opencontainers.image.source = "https://github.com/oleggtro/go-e-prometheus-exporter"
+LABEL org.opencontainers.image.source="https://github.com/oleggtro/go-e-prometheus-exporter"
 LABEL org.opencontainers.image.authors="ole@oleggtro.com"
 LABEL org.opencontainers.image.description="a prometheus exporter for the go-e home solar controller"
 

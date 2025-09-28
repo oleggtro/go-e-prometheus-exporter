@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-prometheus_exporter = "0.8.5"
+#prometheus_exporter = "0.8.5"
+prometheus_exporter = { git = 'https://github.com/AlexanderThaller/prometheus_exporter.git', rev = 'c49efe614486f998b20eb410ae0caf3e904cf540' }
 env_logger = "0.9"
 log = { version = "0.4" }
 rand = "0.8"
