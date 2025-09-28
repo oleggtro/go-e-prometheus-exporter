@@ -8,7 +8,7 @@ RUN cargo build --release
 
 #FROM docker.io/library/rust:1.90-alpine
 FROM scratch AS runner
-ARG BIN_NAME=goe-prometheus-exporter
+ARG BIN_NAME=go-e-prometheus-exporter
 COPY --from=builder /build/target/release/$BIN_NAME /usr/local/bin/$BIN_NAME
 EXPOSE 9186
-CMD ["goe-prometheus-exporter"]
+CMD ["go-e-prometheus-exporter"]
